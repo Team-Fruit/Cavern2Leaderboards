@@ -1,0 +1,18 @@
+[
+    {
+        "modid": "${modid}",
+        "name": "${name}",
+        "description": "${description}",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "${url}",
+        "updateUrl": "${updateUrl}",
+        "authorList": [
+            "Kamesuta"
+        ],
+        "credits": "(C)2019-${year} TeamFruit",
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": []
+    }
+]
