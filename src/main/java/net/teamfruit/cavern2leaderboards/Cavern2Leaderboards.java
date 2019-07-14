@@ -77,8 +77,9 @@ public class Cavern2Leaderboards {
 	}
 
 	private static IMinerStats getMinerStats(ForgePlayer player) {
+		IMinerStats stats = null;
 		if (player.isOnline()) {
-			return MinerStats.get(player.entityPlayer, true);
+			stats = MinerStats.get(player.entityPlayer, true);
 		} else {
 			NBTTagCompound playerNbt = player.getPlayerNBT();
 			if (playerNbt.hasKey("ForgeCaps")) {
@@ -87,10 +88,14 @@ public class Cavern2Leaderboards {
 				if (capsNbt.hasKey(minerStatsKey)) {
 					CapabilityMinerStats cap = new CapabilityMinerStats(null);
 					cap.deserializeNBT(capsNbt.getCompoundTag(minerStatsKey));
-					return cap.getCapability(CaveCapabilities.MINER_STATS, null);
+					stats = cap.getCapability(CaveCapabilities.MINER_STATS, null);
 				}
 			}
 		}
+		if (stats != null &&
+				(stats.getRank() >= 0 && stats.getPoint() >= 0) &&
+				(stats.getRank() > 0 || stats.getPoint() > 0))
+			return stats;
 		return null;
 	}
 
