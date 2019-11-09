@@ -79,7 +79,7 @@ public class Cavern2Leaderboards {
 	private static IMinerStats getMinerStats(ForgePlayer player) {
 		IMinerStats stats = null;
 		if (player.isOnline()) {
-			stats = MinerStats.get(player.entityPlayer, true);
+			stats = MinerStats.get(player.getPlayer(), true);
 		} else {
 			NBTTagCompound playerNbt = player.getPlayerNBT();
 			if (playerNbt.hasKey("ForgeCaps")) {
